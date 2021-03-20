@@ -31,6 +31,7 @@ public class Autor implements Serializable{
 	
 	@NotBlank
 	@Email
+	@Column(unique = true)
 	private String email;
 	
 	@NotBlank
