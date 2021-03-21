@@ -1,4 +1,4 @@
-package com.br.zup.academy.wagnerlima.casadocodigo.validation;
+package com.br.zup.academy.wagnerlima.casadocodigo.novoAutor;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,14 +9,11 @@ import javax.validation.ConstraintValidatorContext;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.br.zup.academy.wagnerlima.casadocodigo.exceptions.FieldMessage;
-import com.br.zup.academy.wagnerlima.casadocodigo.novoAutor.Autor;
-import com.br.zup.academy.wagnerlima.casadocodigo.novoAutor.AutorRepositoryProcuraEmail;
-import com.br.zup.academy.wagnerlima.casadocodigo.novoAutor.NovoAutorRequest;
 
 public class NovoAutorValidator implements ConstraintValidator<NovoAutorValid, NovoAutorRequest> {
 
 
-	// injeção de dependencia para a camada de acesso a dados ClientRepository
+	// injeção de dependencia para a camada de acesso a dados AutorRepositoryProcuraEmail
 	
 		@Autowired
 		private AutorRepositoryProcuraEmail repository;

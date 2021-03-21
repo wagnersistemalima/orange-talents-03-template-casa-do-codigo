@@ -6,7 +6,6 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
-import com.br.zup.academy.wagnerlima.casadocodigo.validation.NovoAutorValid;
 
 // Objeto para trafegar dados entre cliente e aplicação
 

@@ -2,7 +2,7 @@ package com.br.zup.academy.wagnerlima.casadocodigo.novoAutor;
 
 import java.io.Serializable;
 
-// Objeto para trafegar dados entre cliente e aplicação
+// Objeto para responder a requisição de cadastrar um autor
 
 public class NovoAutorResponse implements Serializable{
 
