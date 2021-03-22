@@ -6,5 +6,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface CategoriaRepository extends JpaRepository<Categoria, Long>{
 	
-
+	@SuppressWarnings("unchecked")
+	Categoria save(Categoria entity);
 }
