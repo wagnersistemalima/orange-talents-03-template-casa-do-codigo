@@ -2,6 +2,7 @@ package com.br.zup.academy.wagnerlima.casadocodigo.novaCategoria;
 
 import java.io.Serializable;
 
+import javax.persistence.EntityManager;
 import javax.validation.constraints.NotBlank;
 
 import com.br.zup.academy.wagnerlima.casadocodigo.validation.UniqueValue;
@@ -23,10 +24,15 @@ public class NovaCategoriaRequest implements Serializable{
 		this.nome = nome;
 	}
 
-
-
 	public String getNome() {
 		return nome;
+	}
+
+	// Metodo para converter os dados da requisição para entidade
+
+	public Categoria toModel(EntityManager manager) {
+		
+		return new Categoria(nome);
 	}	
 
 }

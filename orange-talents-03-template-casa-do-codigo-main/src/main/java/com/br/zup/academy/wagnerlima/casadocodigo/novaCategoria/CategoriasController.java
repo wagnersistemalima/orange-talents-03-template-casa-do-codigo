@@ -1,9 +1,10 @@
 package com.br.zup.academy.wagnerlima.casadocodigo.novaCategoria;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
 import javax.validation.Valid;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -16,18 +17,16 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping(value = "/categorias")
 public class CategoriasController {
 	
-	// injeção de dependencia para o repository
-	
-	@Autowired
-	CategoriaRepository repository;
+	@PersistenceContext
+	EntityManager manager;
 	
 	// 1º end point / inserir uma categoria / post
 	
 	@PostMapping
 	@Transactional
 	public ResponseEntity<NovaCategoriaResponse> insert(@Valid @RequestBody NovaCategoriaRequest request) {
-		Categoria entity = new Categoria(request.getNome());
-		entity = repository.save(entity);
+		Categoria entity = request.toModel(manager);
+		manager.persist(entity);
 		return ResponseEntity.ok().body(new NovaCategoriaResponse(entity));
 	}
 
