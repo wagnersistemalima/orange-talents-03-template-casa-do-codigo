@@ -105,12 +105,12 @@ public class Autor implements Serializable{
 			return false;
 		return true;
 	}
-
-	// metodo  auxiliar para sempre que for salvar um autor, ele armazenar na dataRegistro o instante atual
-
-	@PrePersist
-	public void prePersist() {
-		dataRegistro = Instant.now();
-	}
+	
+	//metodo auxiliar para sempre que for salvar autor, o metodo armazanar na dataRegistro o instante atual
+	
+		@PrePersist
+		public void prePersist() {
+			dataRegistro = Instant.now();	
+		}
 
 }

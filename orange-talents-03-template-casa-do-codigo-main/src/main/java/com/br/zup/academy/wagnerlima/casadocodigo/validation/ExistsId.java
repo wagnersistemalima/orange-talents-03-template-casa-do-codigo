@@ -16,7 +16,7 @@ import javax.validation.Payload;
 @Retention(RUNTIME)
 public @interface ExistsId {
 
-	String message() default "Validation error";
+	String message() default "Validation error, este dado é unicos e já existe cadastro no banco";
 	Class<?>[] groups() default { };
 	Class<? extends Payload>[] payload() default { };
 	String fieldName();

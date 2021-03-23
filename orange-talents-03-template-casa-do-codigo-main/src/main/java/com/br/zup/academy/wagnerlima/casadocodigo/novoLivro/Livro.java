@@ -2,7 +2,7 @@ package com.br.zup.academy.wagnerlima.casadocodigo.novoLivro;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
-import java.time.LocalDate;
+import java.time.Instant;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -21,8 +21,6 @@ import javax.validation.constraints.Size;
 import com.br.zup.academy.wagnerlima.casadocodigo.novaCategoria.Categoria;
 import com.br.zup.academy.wagnerlima.casadocodigo.novoAutor.Autor;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonFormat.Shape;
 
 // Entidade
 
@@ -65,8 +63,8 @@ public class Livro implements Serializable{
 	
 	@Future
 	@NotNull
-	@JsonFormat(pattern = "dd/MM/yyyy", shape = Shape.STRING)
-	private LocalDate dataPublicacao;
+	@Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
+	private Instant dataPublicacao;
 	
 	// associaçoes
 	
@@ -87,7 +85,7 @@ public class Livro implements Serializable{
 	@JsonCreator
 	public Livro(@NotBlank String titulo, @NotBlank @Size(max = 500) String resumo, @NotBlank String sumario,
 			@NotNull @Min(20) BigDecimal price, @Min(100) @NotNull int quantPagina, @NotBlank String isbn,
-			@Future @NotNull LocalDate dataPublicacao, @NotNull @Valid Categoria categoria, @NotNull @Valid Autor autor) {
+			@Future @NotNull Instant dataPublicacao, @NotNull @Valid Categoria categoria, @NotNull @Valid Autor autor) {
 		this.titulo = titulo;
 		this.resumo = resumo;
 		this.sumario = sumario;
@@ -141,7 +139,7 @@ public class Livro implements Serializable{
 	}
 	
 
-	public LocalDate getDataPublicacao() {
+	public Instant getDataPublicacao() {
 		return dataPublicacao;
 	}
 

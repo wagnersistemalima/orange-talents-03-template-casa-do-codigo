@@ -2,8 +2,9 @@ package com.br.zup.academy.wagnerlima.casadocodigo.novoLivro;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
-import java.time.LocalDate;
+import java.time.Instant;
 
+import javax.persistence.Column;
 import javax.persistence.EntityManager;
 import javax.validation.constraints.Future;
 import javax.validation.constraints.Min;
@@ -18,8 +19,6 @@ import com.br.zup.academy.wagnerlima.casadocodigo.novoAutor.Autor;
 import com.br.zup.academy.wagnerlima.casadocodigo.validation.ExistsId;
 import com.br.zup.academy.wagnerlima.casadocodigo.validation.UniqueValue;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonFormat.Shape;
 
 //objeto simples para carregar dados do cliente para aplicação
 
@@ -55,8 +54,8 @@ public class NovoLivroRequest implements Serializable{
 	
 	@Future
 	@NotNull
-	@JsonFormat(pattern = "dd/MM/yyyy", shape = Shape.STRING)
-	private LocalDate dataPublicacao;
+	@Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
+	private Instant dataPublicacao;
 	
 	// associaçoes
 	
@@ -71,7 +70,7 @@ public class NovoLivroRequest implements Serializable{
 	@JsonCreator
 	public NovoLivroRequest(@NotBlank String titulo, @NotBlank @Size(max = 500) String resumo, @NotBlank String sumario,
 			@NotNull @Min(20) BigDecimal price, @Min(100) @NotNull int quantPagina, @NotBlank String isbn,
-			@NotNull @Future LocalDate dataPublicacao, @NotNull Long idCategoria, @NotNull Long idAutor) {
+			@NotNull @Future Instant dataPublicacao, @NotNull Long idCategoria, @NotNull Long idAutor) {
 		this.titulo = titulo;
 		this.resumo = resumo;
 		this.sumario = sumario;
@@ -107,7 +106,7 @@ public class NovoLivroRequest implements Serializable{
 		return isbn;
 	}
 
-	public LocalDate getDataPublicacao() {
+	public Instant getDataPublicacao() {
 		return dataPublicacao;
 	}
 
@@ -119,7 +118,7 @@ public class NovoLivroRequest implements Serializable{
 		return idAutor;
 	}
 	
-	// metodo com a logica de validação
+	// metodo com a logica de validação 1º endPoint
 
 	public Livro toModel(EntityManager manager) {
 		
