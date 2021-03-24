@@ -22,6 +22,7 @@ public class ExistsIdValidator implements ConstraintValidator<ExistsId, Object>{
 		domainAttribute = params.fieldName();
 		klass = params.domainClass();
 	}
+	
 
 	@Override
 	public boolean isValid(Object value, ConstraintValidatorContext context) {
@@ -35,6 +36,8 @@ public class ExistsIdValidator implements ConstraintValidator<ExistsId, Object>{
 		
 		List<?> list = query.getResultList();
 		Assert.isTrue(list.size() <=1, "aconteceu algo bizarro e você tem mais de um "+klass+" com o atributo "+domainAttribute+" com o valor = "+value);
+		
+		
 		
 		return !list.isEmpty();
 	}

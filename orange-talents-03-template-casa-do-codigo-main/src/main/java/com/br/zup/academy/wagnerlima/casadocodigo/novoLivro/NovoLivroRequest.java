@@ -12,8 +12,6 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-import org.springframework.util.Assert;
-
 import com.br.zup.academy.wagnerlima.casadocodigo.novaCategoria.Categoria;
 import com.br.zup.academy.wagnerlima.casadocodigo.novoAutor.Autor;
 import com.br.zup.academy.wagnerlima.casadocodigo.validation.ExistsId;
@@ -124,12 +122,9 @@ public class NovoLivroRequest implements Serializable{
 
 	public Livro toModel(EntityManager manager) {
 		
-		Categoria categoria = manager.find(Categoria.class, idCategoria);
-		Autor autor = manager.find(Autor.class, idAutor);
+		@NotNull Categoria categoria = manager.find(Categoria.class, idCategoria);
+		@NotNull Autor autor = manager.find(Autor.class, idAutor);
 		
-		Assert.state(categoria != null, "você está tentando cadastrar uma livro para um categoria que não existe!" + idCategoria);
-		Assert.state(autor != null, "Você está tentando cadastrar um livro para um autor que não existe" + idAutor);
-
 		return new Livro(titulo, resumo, sumario, price, quantPagina, isbn, dataPublicacao, categoria, autor);
 	}
 

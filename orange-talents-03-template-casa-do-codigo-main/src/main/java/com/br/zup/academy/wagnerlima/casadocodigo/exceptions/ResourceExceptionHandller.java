@@ -18,23 +18,25 @@ public class ResourceExceptionHandller {
 
 	@ExceptionHandler(MethodArgumentNotValidException.class)
 	public ResponseEntity<ValidationError> validatiom(MethodArgumentNotValidException e, HttpServletRequest request) {
-		HttpStatus status = HttpStatus.UNPROCESSABLE_ENTITY;
-		ValidationError error = new ValidationError(Instant.now(), status.value(), "Validation exception!", e.getMessage(), request.getRequestURI());
-		
+		HttpStatus status = HttpStatus.BAD_REQUEST;
+		ValidationError error = new ValidationError(Instant.now(), status.value(), "Validation exception!",
+				e.getMessage(), request.getRequestURI());
+
 		for (FieldError f : e.getBindingResult().getFieldErrors()) {
 			error.addErro(f.getField(), f.getDefaultMessage());
 		}
 		return ResponseEntity.status(status).body(error);
 	}
-	
+
 	// metodo para tratamento de erro recurso não encontrado / resposta 404
-			@ExceptionHandler(ResourceNotFoundException.class)
-			public ResponseEntity<ValidationError> entityNotFound(ResourceNotFoundException e, HttpServletRequest request) {
-				HttpStatus status = HttpStatus.NOT_FOUND;
-				ValidationError error = new ValidationError(Instant.now(),
-						status.value(), "recurso não encontrado", e.getMessage(), request.getRequestURI());
-				
-				return ResponseEntity.status(status).body(error);
-			}
+	@ExceptionHandler(ResourceNotFoundException.class)
+	public ResponseEntity<ValidationError> entityNotFound(ResourceNotFoundException e, HttpServletRequest request) {
+		HttpStatus status = HttpStatus.NOT_FOUND;
+		ValidationError error = new ValidationError(Instant.now(), status.value(), "recurso não encontrado",
+				e.getMessage(), request.getRequestURI());
+
+		return ResponseEntity.status(status).body(error);
+	}
+	
 
 }
