@@ -17,6 +17,7 @@ public class NovoAutorRequest implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 	
+	
 	@NotBlank(message = "Campo obrigatório")
 	private String nome;
 	
@@ -41,6 +42,8 @@ public class NovoAutorRequest implements Serializable{
 	public String getNome() {
 		return nome;
 	}
+	
+	
 
 	public String getEmail() {
 		return email;

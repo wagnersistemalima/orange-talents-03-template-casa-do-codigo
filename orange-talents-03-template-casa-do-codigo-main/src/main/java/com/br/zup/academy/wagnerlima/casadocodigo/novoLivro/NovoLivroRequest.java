@@ -28,6 +28,7 @@ public class NovoLivroRequest implements Serializable{
 	
 	// atributos basicos
 	
+	
 	@NotBlank
 	@UniqueValue(domainClass = Livro.class, fieldName = "titulo") 
 	private String titulo;
@@ -97,6 +98,7 @@ public class NovoLivroRequest implements Serializable{
 	public BigDecimal getPrice() {
 		return price;
 	}
+	
 
 	public int getQuantPagina() {
 		return quantPagina;
