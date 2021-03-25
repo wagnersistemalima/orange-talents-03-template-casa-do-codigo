@@ -36,6 +36,11 @@ public class Estado implements Serializable{
 	@ManyToOne
 	private Pais pais;
 	
+	@Deprecated
+	public Estado() {
+		
+	}
+	
 	// construtor
 
 	public Estado(@NotBlank String nome, Pais pais) {

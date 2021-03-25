@@ -16,3 +16,15 @@ INSERT INTO tb_livro (titulo, resumo, sumario, price, quant_pagina, isbn, data_p
 INSERT INTO tb_livro (titulo, resumo, sumario, price, quant_pagina, isbn, data_publicacao, categoria_id, autor_id) VALUES ('Mil Sóis Resplandecentes', 'um e bom, mas mil e melhor', 'sumario deste livro', '50', '400', 'poiwwda', TIMESTAMP WITH TIME ZONE '2029-07-14T10:00:00Z', 2, 4);
 INSERT INTO tb_livro (titulo, resumo, sumario, price, quant_pagina, isbn, data_publicacao, categoria_id, autor_id) VALUES ('O velho que lia romances de amor', 'panela velha faz comida boa', 'sumario deste livro', '60', '300', 'bvcxds', TIMESTAMP WITH TIME ZONE '2029-07-14T10:00:00Z', 1, 4);
 INSERT INTO tb_livro (titulo, resumo, sumario, price, quant_pagina, isbn, data_publicacao, categoria_id, autor_id) VALUES ('Até que a morte nos una', 'mas ninguem que morrer primeiro', 'sumario deste livro', '70', '310', 'oiujhykl', TIMESTAMP WITH TIME ZONE '2029-07-14T10:00:00Z', 3, 1);
+
+INSERT INTO tb_pais (nome) VALUES ('Brasil');
+INSERT INTO tb_pais (nome) VALUES ('EUA');
+INSERT INTO tb_pais (nome) VALUES ('Alemanha');
+INSERT INTO tb_pais (nome) VALUES ('Espanha');
+INSERT INTO tb_pais (nome) VALUES ('Islandia');
+
+INSERT INTO tb_estado (nome, pais_id) VALUES ('Paraiba', 1);
+INSERT INTO tb_estado (nome, pais_id) VALUES ('Pernabuco', 1);
+INSERT INTO tb_estado (nome, pais_id) VALUES ('Natal', 1);
+INSERT INTO tb_estado (nome, pais_id) VALUES ('Fortaleza', 1);
+INSERT INTO tb_estado (nome, pais_id) VALUES ('Bahia', 1);

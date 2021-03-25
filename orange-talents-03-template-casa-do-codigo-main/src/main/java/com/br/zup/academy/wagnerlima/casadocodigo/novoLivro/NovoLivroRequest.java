@@ -118,7 +118,7 @@ public class NovoLivroRequest implements Serializable{
 		return idAutor;
 	}
 	
-	// metodo com a logica de validação 1º endPoint
+	// metodo com a logica de validação convertendo a request para entidade 1º endPoint
 
 	public Livro toModel(EntityManager manager) {
 		
