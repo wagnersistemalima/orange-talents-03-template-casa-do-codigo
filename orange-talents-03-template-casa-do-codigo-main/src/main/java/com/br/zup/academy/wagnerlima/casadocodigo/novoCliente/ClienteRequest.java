@@ -78,7 +78,7 @@ public class ClienteRequest implements Serializable{
 			@CPF @CNPJ @NotBlank String documento, @NotBlank String endereco, @NotBlank String complemento,
 			@NotBlank String cidade, @NotBlank Long idPais, @NotBlank Long idEstado, @NotBlank String telefone,
 			@NotBlank String cep) {
-		this.email = email;
+		this.email = email.toLowerCase();
 		this.nome = nome;
 		this.sobreNome = sobreNome;
 		this.documento = documento;
@@ -92,7 +92,7 @@ public class ClienteRequest implements Serializable{
 	}
 
 	public String getEmail() {
-		return email;
+		return email.toLowerCase();
 	}
 
 
